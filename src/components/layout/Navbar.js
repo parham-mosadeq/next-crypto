@@ -76,7 +76,7 @@ const Navbar = () => {
               >
                 <Divider my={14} />
                 <Stack
-                zIndex={100}
+                  zIndex={100}
                   textAlign='center '
                   textTransform='capitalize '
                   letterSpacing={2}
@@ -131,7 +131,12 @@ const Navbar = () => {
         >
           <Box
             as='div'
-            maxW='container.xl'
+            maxW={{
+              base: 'container.sm',
+              md: 'container.sm',
+              lg: 'container.lg',
+              xl: 'container.xg',
+            }}
             display='flex'
             justifyContent='space-between'
             alignItems='center'
