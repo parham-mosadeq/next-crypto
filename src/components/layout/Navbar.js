@@ -63,8 +63,9 @@ const Navbar = () => {
           width='container.lg'
         >
           {openM ? (
-            <Fade in={open}>
+            <Fade _dragY={2} _dragX={4} in={open}>
               <Box
+                zIndex={101}
                 width='36'
                 minH='container.xl'
                 position='absolute'
@@ -75,6 +76,7 @@ const Navbar = () => {
               >
                 <Divider my={14} />
                 <Stack
+                zIndex={100}
                   textAlign='center '
                   textTransform='capitalize '
                   letterSpacing={2}
@@ -124,52 +126,58 @@ const Navbar = () => {
           py={2}
           bg='blue.300'
           display='flex'
-          flexDir='row'
-          justifyContent='space-between'
           alignContent='center'
-          flexWrap='nowrap'
+          justifyContent='center'
         >
-          <Heading
-            as='h2'
-            fontWeight='bold'
-            fontSize={15}
-            color='blackAlpha.500'
-            flexShrink={1}
-            width='full'
-          >
-            <Link href='/'>Coin market</Link>
-          </Heading>
-          <List
-            flexGrow={1}
+          <Box
+            as='div'
+            maxW='container.xl'
             display='flex'
+            justifyContent='space-between'
             alignItems='center'
-            justifyContent='space-evenly'
-            color='ButtonShadow'
-            width='container.lg'
-            flexWrap='nowrap'
           >
-            <ListItem
-              textTransform='capitalize'
-              letterSpacing={2}
-              lineHeight={0}
+            <Heading
+              as='h2'
+              fontWeight='bold'
+              fontSize={15}
+              color='blackAlpha.500'
+              flexShrink={1}
+              width='full'
             >
-              <Link href='/'>home</Link>
-            </ListItem>
-            <ListItem
-              textTransform='capitalize'
-              letterSpacing={2}
-              lineHeight={0}
+              <Link href='/'>Coin market</Link>
+            </Heading>
+            <List
+              flexGrow={1}
+              display='flex'
+              alignItems='center'
+              justifyContent='space-evenly'
+              color='ButtonShadow'
+              width='container.lg'
+              flexWrap='nowrap'
             >
-              <Link href='/faves'>faves</Link>
-            </ListItem>
-            <ListItem
-              textTransform='capitalize'
-              letterSpacing={2}
-              lineHeight={0}
-            >
-              <Link href='/exchanges'>exchanges</Link>
-            </ListItem>
-          </List>
+              <ListItem
+                textTransform='capitalize'
+                letterSpacing={2}
+                lineHeight={0}
+              >
+                <Link href='/'>home</Link>
+              </ListItem>
+              <ListItem
+                textTransform='capitalize'
+                letterSpacing={2}
+                lineHeight={0}
+              >
+                <Link href='/faves'>faves</Link>
+              </ListItem>
+              <ListItem
+                textTransform='capitalize'
+                letterSpacing={2}
+                lineHeight={0}
+              >
+                <Link href='/exchanges'>exchanges</Link>
+              </ListItem>
+            </List>
+          </Box>
         </Container>
       </>
     );
