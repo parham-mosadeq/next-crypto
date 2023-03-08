@@ -8,12 +8,15 @@ import {
   Heading,
   Stack,
   Divider,
+  Fade,
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 const Navbar = () => {
+  // * InnerWidth state
   const [width, setWidth] = useState(0);
+  // * Menu Toggle Btn
   const [openM, setOpenM] = useState(false);
-
+  // * Toggle handler
   const handleMenu = () => {
     setOpenM((prev) => !prev);
   };
@@ -31,6 +34,7 @@ const Navbar = () => {
   }, [width]);
 
   // * Tablet and smaller devices
+  // ! MOBILE
   if (width <= 768) {
     return (
       <Container
@@ -59,40 +63,42 @@ const Navbar = () => {
           width='container.lg'
         >
           {openM ? (
-            <Box
-              width='36'
-              minH='container.xl'
-              position='absolute'
-              top={0}
-              right={0}
-              bg='blue.500'
-              transition='ease-out'
-            >
-              <Divider my={14} />
-              <Stack
-                textAlign='center '
-                textTransform='capitalize '
-                letterSpacing={2}
-              >
-                <ListItem>
-                  <Link href='/'>home</Link>
-                </ListItem>
-                <ListItem>
-                  <Link href='/faves'>faves</Link>
-                </ListItem>
-                <ListItem>
-                  <Link href='/exchanges'>exchanges</Link>
-                </ListItem>
-              </Stack>
-              <CloseIcon
-                fontSize={17}
-                cursor='pointer'
+            <Fade in={open}>
+              <Box
+                width='36'
+                minH='container.xl'
                 position='absolute'
-                top='5'
-                right='5'
-                onClick={() => handleMenu()}
-              />
-            </Box>
+                top={0}
+                right={0}
+                bg='blue.500'
+                transition='ease-out'
+              >
+                <Divider my={14} />
+                <Stack
+                  textAlign='center '
+                  textTransform='capitalize '
+                  letterSpacing={2}
+                >
+                  <ListItem>
+                    <Link href='/'>home</Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link href='/faves'>faves</Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link href='/exchanges'>exchanges</Link>
+                  </ListItem>
+                </Stack>
+                <CloseIcon
+                  fontSize={17}
+                  cursor='pointer'
+                  position='absolute'
+                  top='5'
+                  right='5'
+                  onClick={() => handleMenu()}
+                />
+              </Box>
+            </Fade>
           ) : (
             <HamburgerIcon
               fontSize={19}
@@ -108,6 +114,7 @@ const Navbar = () => {
     );
   }
   // * Desktop width
+  // ! DESKTOP
   if (width > 769) {
     return (
       <>
