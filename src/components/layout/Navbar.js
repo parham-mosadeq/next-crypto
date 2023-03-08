@@ -11,7 +11,13 @@ import {
   Fade,
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
+import { useSelector, useDispatch } from 'react-redux';
+
 const Navbar = () => {
+  const dispatch = useDispatch();
+  const toggleMenu = useSelector((state) => state.toggleMenu);
+  console.log(toggleMenu);
+
   // * InnerWidth state
   const [width, setWidth] = useState(0);
   // * Menu Toggle Btn

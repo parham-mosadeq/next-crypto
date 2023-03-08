@@ -3,6 +3,7 @@ import CoinsList from '@/components/shared/CoinsList';
 import { fetchCoins } from '@/helpers/api-utils';
 import { Box, Container, Grid, GridItem, Input } from '@chakra-ui/react';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 const HomePage = ({ allCoins }) => {
   // * Coin name state
   const [coinName, setCoinName] = useState('');
@@ -66,7 +67,7 @@ export async function getStaticProps() {
     props: {
       allCoins,
     },
-    revalidate: 2500,
+    revalidate: 25000,
   };
 }
 
