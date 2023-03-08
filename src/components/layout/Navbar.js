@@ -115,7 +115,7 @@ const Navbar = () => {
   }
   // * Desktop width
   // ! DESKTOP
-  if (width > 769) {
+  if (width >= 769) {
     return (
       <>
         <Container
