@@ -1,11 +1,9 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { toggleMenu } from './general/generalSlice';
-
-const rootReducer = combineReducers({ toggleMenu });
+import { generalSlice } from './general/generalSlice';
 
 export const store = configureStore({
   reducer: {
-    toggleMenu
+    generalState: generalSlice.reducer,
   },
   middleware: [],
 });

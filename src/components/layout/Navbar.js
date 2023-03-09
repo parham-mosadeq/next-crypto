@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import {
   Container,
@@ -12,36 +12,19 @@ import {
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import { useSelector, useDispatch } from 'react-redux';
+import { toggleMenu } from '../redux/general/generalSlice';
+import useWidth from '@/helpers/useWidth';
 
 const Navbar = () => {
   const dispatch = useDispatch();
-  const toggleMenu = useSelector((state) => state.toggleMenu);
-  console.log(toggleMenu);
+  const isOpen = useSelector((state) => state.generalState.isOpen);
 
-  // * InnerWidth state
-  const [width, setWidth] = useState(0);
-  // * Menu Toggle Btn
-  const [openM, setOpenM] = useState(false);
-  // * Toggle handler
-  const handleMenu = () => {
-    setOpenM((prev) => !prev);
-  };
-
-  useEffect(() => {
-    // * Function for updating the state
-    const getWidth = (e) => {
-      // * Setting the current width
-      setWidth(e.currentTarget.innerWidth);
-    };
-    // * Getting the innerWidth of the screen on resize
-    window.addEventListener('resize', getWidth);
-    // * Cleaning the useEffect
-    return () => window.removeEventListener('resize', getWidth);
-  }, [width]);
+  const [initWidth] = useWidth(768);
+  console.log(initWidth);
 
   // * Tablet and smaller devices
   // ! MOBILE
-  if (width <= 768) {
+  if (initWidth <= 768) {
     return (
       <Container
         maxW='container.md'
@@ -68,45 +51,43 @@ const Navbar = () => {
           color='ButtonShadow'
           width='container.lg'
         >
-          {openM ? (
-            <Fade _dragY={2} _dragX={4} in={open}>
-              <Box
-                zIndex={101}
-                width='36'
-                minH='container.xl'
-                position='absolute'
-                top={0}
-                right={0}
-                bg='blue.500'
-                transition='ease-out'
+          {isOpen ? (
+            <Box
+              zIndex={101}
+              width='36'
+              minH='container.xl'
+              position='absolute'
+              top={0}
+              right={0}
+              bg='blue.500'
+              transition='ease-out'
+            >
+              <Divider my={14} />
+              <Stack
+                zIndex={100}
+                textAlign='center '
+                textTransform='capitalize '
+                letterSpacing={2}
               >
-                <Divider my={14} />
-                <Stack
-                  zIndex={100}
-                  textAlign='center '
-                  textTransform='capitalize '
-                  letterSpacing={2}
-                >
-                  <ListItem>
-                    <Link href='/'>home</Link>
-                  </ListItem>
-                  <ListItem>
-                    <Link href='/faves'>faves</Link>
-                  </ListItem>
-                  <ListItem>
-                    <Link href='/exchanges'>exchanges</Link>
-                  </ListItem>
-                </Stack>
-                <CloseIcon
-                  fontSize={17}
-                  cursor='pointer'
-                  position='absolute'
-                  top='5'
-                  right='5'
-                  onClick={() => handleMenu()}
-                />
-              </Box>
-            </Fade>
+                <ListItem>
+                  <Link href='/'>home</Link>
+                </ListItem>
+                <ListItem>
+                  <Link href='/faves'>faves</Link>
+                </ListItem>
+                <ListItem>
+                  <Link href='/exchanges'>exchanges</Link>
+                </ListItem>
+              </Stack>
+              <CloseIcon
+                fontSize={17}
+                cursor='pointer'
+                position='absolute'
+                top='5'
+                right='5'
+                onClick={() => dispatch(toggleMenu())}
+              />
+            </Box>
           ) : (
             <HamburgerIcon
               fontSize={19}
@@ -114,7 +95,7 @@ const Navbar = () => {
               position='absolute'
               bottom='5'
               right='5'
-              onClick={() => handleMenu()}
+              onClick={() => dispatch(toggleMenu())}
             />
           )}
         </List>
@@ -123,7 +104,7 @@ const Navbar = () => {
   }
   // * Desktop width
   // ! DESKTOP
-  if (width >= 769) {
+  if (initWidth >= 769) {
     return (
       <>
         <Container

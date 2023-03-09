@@ -1,6 +1,7 @@
 import { createSlice, current } from '@reduxjs/toolkit';
 
 const { log } = console;
+
 const initialState = {
   isOpen: false,
   homeSearch: '',
@@ -11,7 +12,11 @@ export const generalSlice = createSlice({
   initialState,
   reducers: {
     toggleMenu: (state, action) => {
-      return state.isOpen;
+      if (state.isOpen) {
+        state.isOpen = false;
+      } else {
+        state.isOpen = true;
+      }
     },
 
     homeSearchInput: (state, action) => {},
@@ -19,5 +24,3 @@ export const generalSlice = createSlice({
 });
 
 export const { toggleMenu } = generalSlice.actions;
-
-export default generalSlice.reducer;
