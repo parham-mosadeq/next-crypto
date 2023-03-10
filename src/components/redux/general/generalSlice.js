@@ -4,6 +4,7 @@ const { log } = console;
 
 const initialState = {
   isOpen: false,
+  innerWidth: '',
   homeSearch: '',
 };
 
@@ -11,7 +12,7 @@ export const generalSlice = createSlice({
   name: 'general-state',
   initialState,
   reducers: {
-    toggleMenu: (state, action) => {
+    toggleMenu: (state) => {
       if (state.isOpen) {
         state.isOpen = false;
       } else {
@@ -19,8 +20,12 @@ export const generalSlice = createSlice({
       }
     },
 
+    setWidth: (state) => {
+      state.innerWidth = window.innerWidth;
+    },
+
     homeSearchInput: (state, action) => {},
   },
 });
 
-export const { toggleMenu } = generalSlice.actions;
+export const { toggleMenu, setWidth } = generalSlice.actions;
