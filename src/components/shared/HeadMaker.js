@@ -1,6 +1,6 @@
 import Head from 'next/head';
-
-const HeadMaker = ({ homeProp, location }) => {
+import styles from '../../styles/HeadMaker.module.css';
+const HeadMaker = ({ homeProp, location, metaName, metaDesc }) => {
   return (
     // * Next-js Head component,
     <Head>
@@ -10,6 +10,7 @@ const HeadMaker = ({ homeProp, location }) => {
         {homeProp} | {location}
         {/* location => where you are. */}
       </title>
+      <meta name={metaName} description={metaDesc} />
     </Head>
   );
 };

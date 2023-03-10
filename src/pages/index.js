@@ -24,7 +24,12 @@ const HomePage = ({ allCoins }) => {
   return (
     <Container maxW='container.lg' minH='container.xl'>
       {/* page title  */}
-      <HeadMaker homeProp='coin market' location='home' />
+      <HeadMaker
+        homeProp='coin market'
+        location='home'
+        metaName='Home Page'
+        metaDesc='home page of our application/coin-market. here you can brows all coins listed by highest price/liked'
+      />
 
       <Box>
         <Input
