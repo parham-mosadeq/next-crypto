@@ -5,8 +5,8 @@ const FavesHomePage = () => {
   return (
     <div>
       <HeadMaker
-        homeProp='coin market'
-        location='faves'
+        homeProp='Coin Market'
+        location='Faves'
         metaName='favorite'
         metaDesc='This page shows users favorite coin/exchanges'
       />
