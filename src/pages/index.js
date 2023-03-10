@@ -2,20 +2,24 @@ import HeadMaker from '@/components/shared/HeadMaker';
 import CoinsList from '@/components/shared/CoinsList';
 import { fetchCoins } from '@/helpers/api-utils';
 import { Box, Container, Grid, GridItem, Input } from '@chakra-ui/react';
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { homeSearchInput } from '@/components/redux/general/generalSlice';
+
 const HomePage = ({ allCoins }) => {
-  // * Coin name state
-  const [coinName, setCoinName] = useState('');
+  const dispatch = useDispatch();
+  const searchInput = useSelector((state) => state.generalState.homeSearch);
+  console.log(allCoins);
+
   // * Handling setCoinName
   const handleSearch = (e) => {
-    setCoinName(e.target.value);
+    dispatch(homeSearchInput(e.target.value));
   };
-  // * Looking for expected coins
 
-  let searchCoin = allCoins.filter((coin) =>
-    coin.name.toLowerCase().includes(coinName)
-  );
+  // * Looking for expected coins
+  let searchCoin = allCoins.filter((coin) => {
+    const filtered = coin.name.toLowerCase().includes(searchInput);
+    return filtered;
+  });
 
   return (
     <Container maxW='container.lg' minH='container.xl'>
@@ -25,7 +29,7 @@ const HomePage = ({ allCoins }) => {
       <Box>
         <Input
           onChange={(e) => handleSearch(e)}
-          value={coinName}
+          value={searchInput}
           mx='auto'
           my={3}
           placeholder='search coins'
@@ -61,13 +65,15 @@ const HomePage = ({ allCoins }) => {
 };
 
 export async function getStaticProps() {
+  // * Receiving data from api
   const allCoins = await fetchCoins();
 
   return {
     props: {
       allCoins,
     },
-    revalidate: 25000,
+    // * Revalidating data
+    revalidate: 50000,
   };
 }
 

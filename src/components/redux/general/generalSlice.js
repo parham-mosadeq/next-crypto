@@ -24,8 +24,10 @@ export const generalSlice = createSlice({
       state.innerWidth = window.innerWidth;
     },
 
-    homeSearchInput: (state, action) => {},
+    homeSearchInput: (state, action) => {
+      state.homeSearch = action.payload;
+    },
   },
 });
 
-export const { toggleMenu, setWidth } = generalSlice.actions;
+export const { toggleMenu, setWidth, homeSearchInput } = generalSlice.actions;
