@@ -9,7 +9,7 @@ import {
   Image,
   Divider,
 } from '@chakra-ui/react';
-import { m } from 'framer-motion';
+
 const CoinsList = ({ coin }) => {
   return (
     <article>
@@ -28,11 +28,11 @@ const CoinsList = ({ coin }) => {
             </Text>
           </CardBody>
           <CardFooter>
-            <Button mr={1} colorScheme='blue'>
+            <Button textTransform='capitalize' mr={1} colorScheme='blue'>
               add to fave
             </Button>
-            <Button ml={1} colorScheme='blue'>
-              visit coin
+            <Button textTransform='capitalize' ml={1} colorScheme='blue'>
+              view details
             </Button>
           </CardFooter>
         </Card>
