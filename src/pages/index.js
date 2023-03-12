@@ -8,7 +8,7 @@ import { homeSearchInput } from '@/components/redux/general/generalSlice';
 const HomePage = ({ allCoins }) => {
   const dispatch = useDispatch();
   const searchInput = useSelector((state) => state.generalState.homeSearch);
-  console.log(allCoins);
+  // console.log(allCoins);
 
   // * Handling setCoinName
   const handleSearch = (e) => {

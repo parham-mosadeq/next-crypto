@@ -7,9 +7,8 @@ const useWidth = (originalWidth) => {
     const handleResize = (e) => {
       // if (!e.currentTarget.innerWidth) {
       //   setInitWidth(e.currentTarget.innerWidth);
-      //   console.log(456);
       // }
-      // console.log(123);
+      // 
       // setInitWidth(window.innerWidth);
       setInitWidth(e.currentTarget.innerWidth);
     };

@@ -10,7 +10,13 @@ import {
   Divider,
 } from '@chakra-ui/react';
 
+import { useDispatch, useSelector } from 'react-redux';
+import { addToFaves } from '../redux/faves/faveSlice';
+import Link from 'next/link';
 const CoinsList = ({ coin }) => {
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state.faveState.faves);
+  console.log(state);
   return (
     <article>
       <>
@@ -28,11 +34,16 @@ const CoinsList = ({ coin }) => {
             </Text>
           </CardBody>
           <CardFooter>
-            <Button textTransform='capitalize' mr={1} colorScheme='blue'>
+            <Button
+              onClick={() => dispatch(addToFaves(coin))}
+              textTransform='capitalize'
+              mr={1}
+              colorScheme='blue'
+            >
               add to fave
             </Button>
             <Button textTransform='capitalize' ml={1} colorScheme='blue'>
-              view details
+              <Link href={`/details/${coin.id}`}>view details</Link>
             </Button>
           </CardFooter>
         </Card>
