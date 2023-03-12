@@ -19,25 +19,28 @@ const CoinsList = ({ coin }) => {
   const dispatch = useDispatch();
   return (
     <Box as='article'>
-      <Card align='center' my={3}>
+      <Card align='center' my={3} rounded='lg'>
         <CardHeader>
-          <Heading letterSpacing={2} size='lg'>
+          <Heading
+            letterSpacing={2}
+            size='md'
+            fontSize={18}
+            color='facebook.700'
+          >
             {' '}
             {coin.name}
           </Heading>
         </CardHeader>
         <Divider />
-        <CardBody>
-          <Text>
-            <Image src={coin.image} width={120} height={120} />
-          </Text>
+        <CardBody maxW='full' display='block' mx='auto' p={0}>
+          <Image src={coin.image} width={220} height={220} my={3} />
         </CardBody>
         <CardFooter>
           <Button
-            onClick={() => dispatch(removeFave(coin.id))}
+            onClick={() => dispatch(removeFave(coin))}
             textTransform='capitalize'
             mr={1}
-            colorScheme='blue'
+            colorScheme='red'
           >
             remove
           </Button>
