@@ -13,6 +13,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { addToFaves } from '../redux/faves/faveSlice';
 import Link from 'next/link';
+
 const CoinsList = ({ coin }) => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.faveState.faves);

@@ -10,6 +10,7 @@ const faveSlice = createSlice({
   reducers: {
     addToFaves: (state, action) => {
       state.faves.push(action.payload);
+      localStorage.setItem('faves', JSON.stringify(state.faves));
     },
   },
 });

@@ -1,9 +1,19 @@
+import CoinsList from '@/components/shared/CoinsList';
 import HeadMaker from '@/components/shared/HeadMaker';
-import React from 'react';
+import { Container, Grid, GridItem } from '@chakra-ui/react';
 
 const FavesHomePage = () => {
+  let faves;
+
+  // * Checking to see if our page (document) is loaded, then accessing the localStorage.
+  // * Why? because we can't access localStorage on server.
+  if (typeof window !== 'undefined') {
+    faves = JSON.parse(localStorage.getItem('faves'));
+  }
+  console.log(faves, 123);
+
   return (
-    <div>
+    <Container>
       <HeadMaker
         homeProp='Coin Market'
         location='Faves'
@@ -11,7 +21,16 @@ const FavesHomePage = () => {
         metaDesc='This page shows users favorite coin/exchanges'
       />
       Faves
-    </div>
+      <Grid>
+        {faves.map((coin) => {
+          return (
+            <GridItem>
+              <CoinsList coin={coin} />
+            </GridItem>
+          );
+        })}
+      </Grid>
+    </Container>
   );
 };
 
