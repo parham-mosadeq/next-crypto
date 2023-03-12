@@ -1,0 +1,53 @@
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  Text,
+  CardFooter,
+  Heading,
+  Button,
+  Image,
+  Divider,
+  Box,
+} from '@chakra-ui/react';
+
+import { useDispatch } from 'react-redux';
+import { removeFave } from '../redux/faves/faveSlice';
+import Link from 'next/link';
+
+const CoinsList = ({ coin }) => {
+  const dispatch = useDispatch();
+  return (
+    <Box as='article'>
+      <Card align='center' my={3}>
+        <CardHeader>
+          <Heading letterSpacing={2} size='lg'>
+            {' '}
+            {coin.name}
+          </Heading>
+        </CardHeader>
+        <Divider />
+        <CardBody>
+          <Text>
+            <Image src={coin.image} width={120} height={120} />
+          </Text>
+        </CardBody>
+        <CardFooter>
+          <Button
+            onClick={() => dispatch(removeFave(coin.id))}
+            textTransform='capitalize'
+            mr={1}
+            colorScheme='blue'
+          >
+            remove
+          </Button>
+          <Button textTransform='capitalize' ml={1} colorScheme='blue'>
+            <Link href={`/details/${coin.id}`}>view details</Link>
+          </Button>
+        </CardFooter>
+      </Card>
+    </Box>
+  );
+};
+
+export default CoinsList;

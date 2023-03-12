@@ -13,7 +13,9 @@ const faveSlice = createSlice({
       localStorage.setItem('faves', JSON.stringify(state.faves));
     },
   },
+
+  removeFave: (state, action) => {},
 });
 
-export const { addToFaves } = faveSlice.actions;
+export const { addToFaves, removeFave } = faveSlice.actions;
 export default faveSlice.reducer;
