@@ -38,7 +38,7 @@ const CoinsList = ({ coin }) => {
             onClick={() => dispatch(addToFaves(coin))}
             textTransform='capitalize'
             mr={1}
-            colorScheme='blue'
+            colorScheme='green'
           >
             add to fave
           </Button>
