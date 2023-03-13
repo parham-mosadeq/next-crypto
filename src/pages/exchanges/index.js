@@ -13,13 +13,17 @@ const ExchangeHomePage = ({ allExchanges }) => {
         gap={3}
         mt={10}
       >
-        {allExchanges.map((exchange) => {
-          return (
-            <GridItem key={exchange.id} rounded='4xl'>
-              <ExchangesList exchange={exchange} />
-            </GridItem>
-          );
-        })}
+        {allExchanges ? (
+          allExchanges.map((exchange) => {
+            return (
+              <GridItem key={exchange.id} rounded='4xl'>
+                <ExchangesList exchange={exchange} />
+              </GridItem>
+            );
+          })
+        ) : (
+          <p>loading...</p>
+        )}
       </Grid>
     </Container>
   );
