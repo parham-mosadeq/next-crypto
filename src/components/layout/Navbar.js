@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import Link from 'next/link';
 import {
   Container,
@@ -11,9 +10,8 @@ import {
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import { useSelector, useDispatch } from 'react-redux';
-import { setWidth, toggleMenu } from '../redux/general/generalSlice';
+import { toggleMenu } from '../redux/general/generalSlice';
 import useWidth from '@/helpers/useWidth';
-import useCurrentWidth from '@/helpers/useCurrentWidth';
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -21,10 +19,6 @@ const Navbar = () => {
   const startWidth = useSelector((state) => state.generalState.innerWidth);
 
   const [initWidth] = useWidth(startWidth);
-
-  useEffect(() => {
-    dispatch(setWidth());
-  }, [initWidth]);
 
   // * Tablet and smaller devices
   // ! MOBILE

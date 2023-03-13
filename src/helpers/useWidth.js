@@ -5,11 +5,7 @@ const useWidth = (originalWidth) => {
 
   useEffect(() => {
     const handleResize = (e) => {
-      // if (!e.currentTarget.innerWidth) {
-      //   setInitWidth(e.currentTarget.innerWidth);
-      // }
-      // 
-      // setInitWidth(window.innerWidth);
+      
       setInitWidth(e.currentTarget.innerWidth);
     };
 

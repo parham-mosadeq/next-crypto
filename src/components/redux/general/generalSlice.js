@@ -21,7 +21,7 @@ export const generalSlice = createSlice({
     },
 
     setWidth: (state) => {
-      state.innerWidth = window.innerWidth;
+      if (window !== 'undefined') state.innerWidth = window.innerWidth;
     },
 
     homeSearchInput: (state, action) => {
