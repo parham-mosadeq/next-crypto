@@ -1,3 +1,4 @@
+import BackBtn from '@/components/shared/BackBtn';
 import FavesLists from '@/components/shared/FavesLists';
 import HeadMaker from '@/components/shared/HeadMaker';
 import { Container, Grid, GridItem, Text } from '@chakra-ui/react';
@@ -21,6 +22,8 @@ const FavesHomePage = () => {
         metaName='favorite'
         metaDesc='This page shows users favorite coin/exchanges'
       />
+      
+      <BackBtn />
       <Grid
         templateColumns={{
           base: 'repeat(1, 1fr)',

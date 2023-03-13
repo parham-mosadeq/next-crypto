@@ -5,7 +5,7 @@ const BackBtn = () => {
   const router = useRouter();
 
   return (
-    <Button onClick={() => router.back()}>
+    <Button my={4} onClick={() => router.back()}>
       <ArrowBackIcon />
     </Button>
   );
