@@ -6,9 +6,7 @@ const HeadMaker = ({ homeProp, location, metaName, metaDesc }) => {
     <Head>
       // * Changing the title
       <title>
-        {/* homeProp => webApp name */}
         {homeProp} | {location}
-        {/* location => where you are. */}
       </title>
       <meta name={metaName} description={metaDesc} />
     </Head>

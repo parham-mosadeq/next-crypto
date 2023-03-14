@@ -9,6 +9,7 @@ import {
   Image,
   Divider,
   Box,
+  useToast,
 } from '@chakra-ui/react';
 
 import { useDispatch } from 'react-redux';
@@ -17,7 +18,7 @@ import Link from 'next/link';
 
 const CoinsList = ({ coin }) => {
   const dispatch = useDispatch();
-
+  const toast = useToast();
   return (
     <Box as='article'>
       <Card align='center'>
@@ -35,7 +36,16 @@ const CoinsList = ({ coin }) => {
         </CardBody>
         <CardFooter>
           <Button
-            onClick={() => dispatch(addToFaves(coin))}
+            onClick={() => {
+              dispatch(addToFaves(coin));
+              toast({
+                title: coin.name,
+                description: 'Added to your faves',
+                status: 'success',
+                duration: 900,
+                isClosable: true,
+              });
+            }}
             textTransform='capitalize'
             mr={1}
             colorScheme='green'

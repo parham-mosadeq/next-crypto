@@ -2,6 +2,8 @@ import { createSlice, current } from '@reduxjs/toolkit';
 
 const initialState = {
   faves: [],
+  currentPage: 1,
+  dataPerPage: 10,
 };
 
 const faveSlice = createSlice({
@@ -10,21 +12,29 @@ const faveSlice = createSlice({
   reducers: {
     addToFaves: (state, action) => {
       state.faves.push(action.payload);
-      localStorage.setItem('faves', JSON.stringify(state.faves));
+      // localStorage.setItem('faves', JSON.stringify(state.faves));
     },
 
     removeFave: (state, action) => {
-      let faves;
-      if (typeof window !== 'undefined') {
-        faves = JSON.parse(localStorage.getItem('faves'));
-      }
+      const filter = state.faves.filter(
+        (fave) => fave.id !== action.payload.id
+      );
+      // state.faves.filter((fave) => fave.id !== action.payload.id);
+      // localStorage.setItem('faves', JSON.stringify(filter));
+      return filter;
+    },
 
-      const filter = faves.filter((fave) => fave.id !== action.payload.id);
-      state.faves.filter((fave) => fave.id !== action.payload.id);
-      localStorage.setItem('faves', JSON.stringify(filter));
+    handleNextPage: (state) => {
+      console.log(123);
+      state.currentPage += 1;
+    },
+
+    handlePrevPage: (state) => {
+      state.currentPage = 1;
     },
   },
 });
 
-export const { addToFaves, removeFave } = faveSlice.actions;
+export const { addToFaves, removeFave, handlePrevPage, handleNextPage } =
+  faveSlice.actions;
 export default faveSlice.reducer;
