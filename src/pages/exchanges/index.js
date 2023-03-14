@@ -7,17 +7,26 @@ import {
   handlePrevPage,
 } from '@/components/redux/faves/faveSlice';
 import Paginate from '@/components/shared/Paginate';
+import usePaginate from '@/helpers/usePaginate';
 const ExchangeHomePage = ({ allExchanges }) => {
   const dispatch = useDispatch();
   // console.log(allExchanges);
 
-  let currentPage = useSelector((state) => state.faveState.currentPage);
-  const dataPerPage = useSelector((state) => state.faveState.dataPerPage);
+  const [
+    currentPage,
+    handleNextPage,
+    dataPerPage,
+    handlePrevPage,
+    currentItems,
+  ] = usePaginate(1, 10, allExchanges);
 
-  const indexOfLastEx = currentPage * dataPerPage;
-  const indexOfFirstEx = indexOfLastEx - dataPerPage;
+  // let currentPage = useSelector((state) => state.faveState.currentPage);
+  // const dataPerPage = useSelector((state) => state.faveState.dataPerPage);
 
-  const currentItems = allExchanges.slice(indexOfFirstEx, indexOfLastEx);
+  // const indexOfLastEx = currentPage * dataPerPage;
+  // const indexOfFirstEx = indexOfLastEx - dataPerPage;
+
+  // const currentItems = allExchanges.slice(indexOfFirstEx, indexOfLastEx);
 
   return (
     <Container maxW='container.lg'>
@@ -44,7 +53,7 @@ const ExchangeHomePage = ({ allExchanges }) => {
       </Grid>
       {/* paginate component */}
       <Paginate
-        dispatch={dispatch}
+        // dispatch={dispatch}
         handleNextPage={handleNextPage}
         handlePrevPage={handlePrevPage}
         currentPage={currentPage}
