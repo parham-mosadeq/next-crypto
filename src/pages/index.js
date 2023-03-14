@@ -4,7 +4,8 @@ import { fetchCoins } from '@/helpers/api-utils';
 import { Box, Container, Grid, GridItem, Input } from '@chakra-ui/react';
 import { useSelector, useDispatch } from 'react-redux';
 import { homeSearchInput } from '@/components/redux/general/generalSlice';
-
+import usePaginate from '@/helpers/usePaginate';
+import Paginate from '@/components/shared/Paginate';
 const HomePage = ({ allCoins }) => {
   const dispatch = useDispatch();
   const searchInput = useSelector((state) => state.generalState.homeSearch);
@@ -21,6 +22,8 @@ const HomePage = ({ allCoins }) => {
     return filtered;
   });
 
+  const [currentPage, handleNextPage, handlePrevPage, currentItems] =
+    usePaginate(1, 10, searchCoin);
   return (
     <Container maxW='container.lg' minH='container.xl'>
       {/* page title  */}
@@ -53,7 +56,7 @@ const HomePage = ({ allCoins }) => {
           gap={3}
         >
           {allCoins.length > 0 ? (
-            searchCoin.map((coin) => {
+            currentItems.map((coin) => {
               return (
                 <GridItem key={coin.id}>
                   <CoinsList coin={coin} />
@@ -65,6 +68,12 @@ const HomePage = ({ allCoins }) => {
           )}
         </Grid>
       </Box>
+      <Paginate
+        // dispatch={dispatch}
+        handleNextPage={handleNextPage}
+        handlePrevPage={handlePrevPage}
+        currentPage={currentPage}
+      />
     </Container>
   );
 };

@@ -9,7 +9,6 @@ const ExchangeHomePage = ({ allExchanges }) => {
 
   const [currentPage, handleNextPage, handlePrevPage, currentItems] =
     usePaginate(1, 10, allExchanges);
-
   return (
     <Container maxW='container.lg'>
       <Grid
