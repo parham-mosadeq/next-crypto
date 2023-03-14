@@ -23,18 +23,8 @@ const faveSlice = createSlice({
       // localStorage.setItem('faves', JSON.stringify(filter));
       return filter;
     },
-
-    handleNextPage: (state) => {
-      console.log(123);
-      state.currentPage += 1;
-    },
-
-    handlePrevPage: (state) => {
-      state.currentPage = 1;
-    },
   },
 });
 
-export const { addToFaves, removeFave, handlePrevPage, handleNextPage } =
-  faveSlice.actions;
+export const { addToFaves, removeFave } = faveSlice.actions;
 export default faveSlice.reducer;

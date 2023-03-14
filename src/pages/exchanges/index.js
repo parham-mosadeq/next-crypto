@@ -1,32 +1,14 @@
-import { Box, Button, Container, Grid, GridItem, Text } from '@chakra-ui/react';
+import { Container, Grid, GridItem } from '@chakra-ui/react';
 import { fetchExchanges } from '../../helpers/api-utils';
 import ExchangesList from '@/components/shared/ExchangesList';
-import { useSelector, useDispatch } from 'react-redux';
-import {
-  handleNextPage,
-  handlePrevPage,
-} from '@/components/redux/faves/faveSlice';
+
 import Paginate from '@/components/shared/Paginate';
 import usePaginate from '@/helpers/usePaginate';
 const ExchangeHomePage = ({ allExchanges }) => {
-  const dispatch = useDispatch();
   // console.log(allExchanges);
 
-  const [
-    currentPage,
-    handleNextPage,
-    dataPerPage,
-    handlePrevPage,
-    currentItems,
-  ] = usePaginate(1, 10, allExchanges);
-
-  // let currentPage = useSelector((state) => state.faveState.currentPage);
-  // const dataPerPage = useSelector((state) => state.faveState.dataPerPage);
-
-  // const indexOfLastEx = currentPage * dataPerPage;
-  // const indexOfFirstEx = indexOfLastEx - dataPerPage;
-
-  // const currentItems = allExchanges.slice(indexOfFirstEx, indexOfLastEx);
+  const [currentPage, handleNextPage, handlePrevPage, currentItems] =
+    usePaginate(1, 10, allExchanges);
 
   return (
     <Container maxW='container.lg'>
