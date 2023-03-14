@@ -44,6 +44,7 @@ const CoinsList = ({ coin }) => {
                 status: 'success',
                 duration: 900,
                 isClosable: true,
+                variant: 'left-accent',
               });
             }}
             textTransform='capitalize'
