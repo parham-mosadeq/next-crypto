@@ -38,3 +38,11 @@ export const fetchCoin = async (coinID) => {
 
   return coin;
 };
+
+export const buildPaths = async () => {
+  const coins = await fetchCoins();
+
+  const paths = coins.map((coin) => [{ params: { coinID: coin.id } }]);
+
+  return paths;
+};

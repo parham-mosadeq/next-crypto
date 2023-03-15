@@ -54,7 +54,7 @@ const CoinsList = ({ coin }) => {
             add to fave
           </Button>
           <Button textTransform='capitalize' ml={1} colorScheme='blue'>
-            <Link href={`/details/${coin.id}`}>view details</Link>
+            <Link href={`/${coin.id}`}>view details</Link>
           </Button>
         </CardFooter>
       </Card>
