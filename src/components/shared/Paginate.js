@@ -7,7 +7,7 @@ const Paginate = ({
   currentPage,
 }) => {
   return (
-    <Box display='flex' justifyContent='center' alignItems='center'>
+    <Box display='flex' my={4} justifyContent='center' alignItems='center'>
       <Button onClick={() => handlePrevPage()}>prev</Button>
       {/* <Button onClick={() => dispatch(handlePrevPage())}>prev</Button> */}
       <Text as='p' textAlign='center' mx={2}>
