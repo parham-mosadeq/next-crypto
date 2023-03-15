@@ -6,7 +6,6 @@ export const fetchCoins = async () => {
   );
 
   const allCoins = await data.json();
-
   return allCoins;
 };
 
@@ -28,4 +27,14 @@ export const fetchExchange = async (exchangeID) => {
   const exchange = await data.json();
 
   return exchange;
+};
+
+export const fetchCoin = async (coinID) => {
+  const data = await fetch(`
+  ${base_url}/coins/${coinID}
+  `);
+
+  const coin = await data.json();
+
+  return coin;
 };
