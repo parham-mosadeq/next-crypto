@@ -1,7 +1,14 @@
 import HeadMaker from '@/components/shared/HeadMaker';
 import CoinsList from '@/components/shared/CoinsList';
 import { fetchCoins } from '@/helpers/api-utils';
-import { Box, Container, Grid, GridItem, Input } from '@chakra-ui/react';
+import {
+  Box,
+  Container,
+  Grid,
+  GridItem,
+  Input,
+  Spinner,
+} from '@chakra-ui/react';
 import { useSelector, useDispatch } from 'react-redux';
 import { homeSearchInput } from '@/components/redux/general/generalSlice';
 import usePaginate from '@/helpers/usePaginate';
@@ -24,6 +31,7 @@ const HomePage = ({ allCoins }) => {
 
   const [currentPage, handleNextPage, handlePrevPage, currentItems] =
     usePaginate(1, 10, searchCoin);
+
   return (
     <Container maxW='container.lg' minH='container.xl'>
       {/* page title  */}
@@ -64,7 +72,7 @@ const HomePage = ({ allCoins }) => {
               );
             })
           ) : (
-            <p>loading...</p>
+            <Spinner color='red.500' />
           )}
         </Grid>
       </Box>

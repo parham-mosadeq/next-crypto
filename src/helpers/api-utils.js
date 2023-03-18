@@ -9,6 +9,7 @@ export const fetchCoins = async () => {
   return allCoins;
 };
 
+
 export const fetchExchanges = async () => {
   const data = await fetch(`
   ${base_url}/exchanges/
