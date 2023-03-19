@@ -18,6 +18,10 @@ const Navbar = () => {
   const isOpen = useSelector((state) => state.generalState.isOpen);
   const startWidth = useSelector((state) => state.generalState.innerWidth);
 
+  if (window !== 'undefined') {
+    useWidth(window.innerWidth);
+  }
+
   const [initWidth] = useWidth(startWidth);
 
   // * Tablet and smaller devices

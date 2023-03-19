@@ -1,10 +1,7 @@
-import { createSlice, current } from '@reduxjs/toolkit';
-
-const { log } = console;
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   isOpen: false,
-  innerWidth: '',
   homeSearch: '',
 };
 
@@ -18,10 +15,6 @@ export const generalSlice = createSlice({
       } else {
         state.isOpen = true;
       }
-    },
-
-    setWidth: (state) => {
-      if (window !== 'undefined') state.innerWidth = window.innerWidth;
     },
 
     homeSearchInput: (state, action) => {
