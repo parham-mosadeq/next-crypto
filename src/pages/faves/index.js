@@ -12,7 +12,6 @@ const FavesHomePage = () => {
     // * Reading data from localStorage.
     faves = JSON.parse(localStorage.getItem('faves'));
   }
-  console.log(faves);
 
   return (
     <Container maxW='container.lg' minH='container.xl'>
@@ -22,7 +21,7 @@ const FavesHomePage = () => {
         metaName='favorite'
         metaDesc='This page shows users favorite coin/exchanges'
       />
-      
+
       <BackBtn />
       <Grid
         templateColumns={{

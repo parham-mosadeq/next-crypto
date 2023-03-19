@@ -13,9 +13,9 @@ import { fetchCoin } from '@/helpers/api-utils';
 import Image from 'next/image';
 import HeadMaker from '@/components/shared/HeadMaker';
 import Link from 'next/link';
-const CoinId = ({ coin }) => {
-  console.log(coin);
+import sanitizeHtml from 'sanitize-html';
 
+const CoinId = ({ coin }) => {
   if (!coin) {
     return (
       <>
@@ -87,6 +87,7 @@ const CoinId = ({ coin }) => {
               >
                 {name}'s rank: {coingecko_rank}
               </Text>
+              {/* <Text>genesis_date: {Date(genesis_date)}</Text> */}
               <Text
                 as='p'
                 my={4}
@@ -126,8 +127,8 @@ const CoinId = ({ coin }) => {
             {/*  information end */}
           </Box>
 
-          <Box>
-            <Text>{en}</Text>
+          <Box as='div' my={4}>
+            <p dangerouslySetInnerHTML={{ __html: sanitizeHtml(en) }}></p>
           </Box>
         </GridItem>
       </Grid>
@@ -138,7 +139,6 @@ const CoinId = ({ coin }) => {
 export async function getServerSideProps(context) {
   const coinId = context.params.coinID;
   const coin = await fetchCoin(coinId);
-  console.log(coin);
 
   return {
     props: {
