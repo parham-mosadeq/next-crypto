@@ -87,7 +87,7 @@ const CoinId = ({ coin }) => {
               >
                 {name}'s rank: {coingecko_rank}
               </Text>
-              {/* <Text>genesis_date: {Date(genesis_date)}</Text> */}
+              <Text>genesis_date: {Date(genesis_date)}</Text>
               <Text
                 as='p'
                 my={4}
