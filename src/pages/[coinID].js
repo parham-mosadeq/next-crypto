@@ -14,6 +14,7 @@ import Image from 'next/image';
 import HeadMaker from '@/components/shared/HeadMaker';
 import Link from 'next/link';
 import sanitizeHtml from 'sanitize-html';
+import BackBtn from '@/components/shared/BackBtn';
 
 const CoinId = ({ coin }) => {
   if (!coin) {
@@ -49,6 +50,7 @@ const CoinId = ({ coin }) => {
         metaName={name + `page`}
         metaDesc={name + 'details page'}
       />
+      <BackBtn />
       <Grid
         maxH='full'
         justifyItems='center'
