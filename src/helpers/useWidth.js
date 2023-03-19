@@ -5,7 +5,6 @@ const useWidth = (originalWidth) => {
 
   useEffect(() => {
     const handleResize = (e) => {
-      
       setInitWidth(e.currentTarget.innerWidth);
     };
 

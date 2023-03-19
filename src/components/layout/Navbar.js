@@ -21,10 +21,6 @@ const Navbar = () => {
 
   const [initWidth] = useWidth(startWidth);
 
-  useEffect(() => {
-    console.log(window.innerWidth);
-  }, []);
-
   // * Tablet and smaller devices
   // ! MOBILE
   if (initWidth <= 768) {
@@ -111,7 +107,7 @@ const Navbar = () => {
     return (
       <>
         <Container
-          maxW='full'
+          minW='full'
           height='14'
           py={2}
           bg='blue.300'
@@ -122,8 +118,8 @@ const Navbar = () => {
           <Box
             as='div'
             maxW={{
-              base: 'container.sm',
-              md: 'container.sm',
+              base: 'container.md',
+              md: 'container.md',
               lg: 'container.lg',
               xl: 'container.xg',
             }}
