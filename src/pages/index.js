@@ -24,7 +24,7 @@ const HomePage = ({ allCoins }) => {
   };
 
   // * Looking for expected coins
-  let searchCoin = allCoins.filter((coin) => {
+  let searchCoin = allCoins?.filter((coin) => {
     const filtered = coin.name.toLowerCase().includes(searchInput);
     return filtered;
   });

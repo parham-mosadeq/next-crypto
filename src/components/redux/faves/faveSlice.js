@@ -12,15 +12,16 @@ const faveSlice = createSlice({
   reducers: {
     addToFaves: (state, action) => {
       state.faves.push(action.payload);
-      // localStorage.setItem('faves', JSON.stringify(state.faves));
+      console.log(current(state));
+      localStorage.setItem('faves', JSON.stringify(state.faves));
     },
 
     removeFave: (state, action) => {
       const filter = state.faves.filter(
         (fave) => fave.id !== action.payload.id
       );
-      // state.faves.filter((fave) => fave.id !== action.payload.id);
-      // localStorage.setItem('faves', JSON.stringify(filter));
+      state.faves.filter((fave) => fave.id !== action.payload.id);
+      localStorage.setItem('faves', JSON.stringify(filter));
       return filter;
     },
   },

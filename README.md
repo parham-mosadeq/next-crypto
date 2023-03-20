@@ -1,6 +1,8 @@
+**Warning**: Due to the calling limitations of the API service, this program may be slow or may not work sometimes.
+
 # Coin Market
 
-Getting information using Redux Toolkit and Chakra UI in NextJs
+Getting information using Rtk and Chakra UI in NextJs
 
 The goal of this project is to create a web application that fetches and displays information about various crypto currencies. The application will be built using Redux Toolkit and Chakra UI.
 
@@ -15,7 +17,6 @@ The goal of this project is to create a web application that fetches and display
 
 - Redux Toolkit: A library for managing state in React applications.
 - Chakra UI: A component library for building user interfaces in React applications.
-- CoinGecko API: An API that provides data on various crypto currencies.
 
 ## Implementation Details
 
